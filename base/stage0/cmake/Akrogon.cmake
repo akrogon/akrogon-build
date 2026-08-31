@@ -1,22 +1,25 @@
+include(ExternalProject)
+
 function(akrogon_package name)
 	cmake_parse_arguments(
 		PACKAGE
 		""
-		"SOURCE_DIR"
-		"DEPENDS"
+		"URL;URL_HASH;SOURCE_SUBDIR"
+		"DEPENDS;CONFIGURE_COMMAND;BUILD_COMMAND;INSTALL_COMMAND"
 		${ARGN}
 	)
 
 	set(target "akrogon-${name}")
 
-	add_custom_target(
-		${target}
-		DEPENDS ${PACKAGE_DEPENDS}
-	)
+	ExternalProject_Add(${target}
+		URL "${PACKAGE_URL}"
+		URL_HASH "${PACKAGE_URL_HASH}"
+		PREFIX "${CMAKE_CURRENT_BINARY_DIR}/${name}"
+		DOWNLOAD_DIR "${AKROGON_DISTFILES}"
 
-	set(
-		AKROGON_PACKAGE_TARGET_${name}
-		${target}
-		PARENT_SCOPE
+		CONFIGURE_COMMAND ${PACKAGE_CONFIGURE_COMMAND}
+		BUILD_COMMAND ${PACKAGE_BUILD_COMMAND}
+		INSTALL_COMMAND ${PACKAGE_INSTALL_COMMAND}
+		DEPENDS ${PACKAGE_DEPENDS}
 	)
 endfunction()

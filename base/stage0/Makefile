@@ -1,4 +1,5 @@
 BUILD_DIR := build
+DISTFILES_DIR := distfiles
 
 .PHONY: all configure clean
 
@@ -10,3 +11,6 @@ configure:
 
 clean:
 	rm -rf $(BUILD_DIR)
+
+dist-clean: clean
+	rm -rf $(DISTFILES_DIR)
