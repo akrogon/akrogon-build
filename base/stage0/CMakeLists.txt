@@ -27,4 +27,8 @@ include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/Akrogon.cmake")
 
 add_subdirectory(packages/binutils)
 add_subdirectory(packages/linux-headers)
+add_subdirectory(packages/gmp)
+add_subdirectory(packages/mpfr)
+add_subdirectory(packages/mpc)
+add_subdirectory(packages/gcc-bootstrap)
 
