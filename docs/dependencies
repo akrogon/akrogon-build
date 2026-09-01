@@ -1,0 +1,10 @@
+make
+cmake
+build-essential
+flex
+bison
+m4
+texinfo
+gettext
+autoconf
+automake
