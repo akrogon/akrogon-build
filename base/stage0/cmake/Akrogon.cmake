@@ -9,7 +9,7 @@ function(akrogon_package name)
 		${ARGN}
 	)
 
-	set(target "akrogon-${name}")
+	set(target "${name}")
 
 	ExternalProject_Add(${target}
 		URL "${PACKAGE_URL}"
