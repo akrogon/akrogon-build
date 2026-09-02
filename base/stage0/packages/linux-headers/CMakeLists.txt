@@ -4,8 +4,9 @@ set(LINUX_URL
 )
 
 set(LINUX_SHA256 "5ebdadb10a4b5708fc6b1c457764a110bc49f8150cc3502c59b921ead8c6fc8c")
+set(LINUX_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/build")
 
-ExternalProject_Add(
+akrogon_package(
 	linux-headers
 	URL "${LINUX_URL}"
 	URL_HASH "SHA256=${LINUX_SHA256}"
@@ -13,7 +14,7 @@ ExternalProject_Add(
 	PREFIX "${CMAKE_CURRENT_BINARY_DIR}/linux"
 	DOWNLOAD_DIR "${AKROGON_DISTFILES}"
 
-	CONFIGURE_COMMAND ""
+	CONFIGURE_COMMAND NONE
 
 	BUILD_COMMAND
 	    ${CMAKE_MAKE_PROGRAM}
@@ -21,5 +22,5 @@ ExternalProject_Add(
 	    headers_install
 	    INSTALL_HDR_PATH=${AKROGON_SYSROOT}
 	
-	INSTALL_COMMAND ""
+	INSTALL_COMMAND NONE
 )

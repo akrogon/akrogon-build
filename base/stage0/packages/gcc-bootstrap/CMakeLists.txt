@@ -10,7 +10,6 @@ akrogon_package(
 
 	DEPENDS
 	    binutils
-	    linux-headers
 	    gmp
 	    mpfr
 	    mpc

@@ -13,6 +13,7 @@ akrogon_package(
 	URL_HASH "SHA256=${MPC_SHA256}"
 
 	DEPENDS gmp
+	    mpfr
 
 	CONFIGURE_COMMAND
 	    <SOURCE_DIR>/configure

@@ -8,6 +8,8 @@ akrogon_package(
 	URL "${GMP_URL}"
 	URL_HASH "SHA256=${GMP_SHA256}"
 
+	DEPENDS binutils
+
 	CONFIGURE_COMMAND
 	    <SOURCE_DIR>/configure
 	    --build=${AKROGON_TARGET_TRIPLE}
