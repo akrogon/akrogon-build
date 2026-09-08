@@ -2,3 +2,4 @@ build/
 tools/
 sysroot/
 distfiles/
+conf/local.cmake
