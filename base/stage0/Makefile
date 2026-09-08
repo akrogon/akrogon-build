@@ -1,5 +1,7 @@
 BUILD_DIR := build
 DISTFILES_DIR := distfiles
+SYSROOT_DIR := sysroot
+TOOLS_DIR := tools
 
 .PHONY: all configure clean
 
@@ -12,5 +14,11 @@ configure:
 clean:
 	rm -rf $(BUILD_DIR)
 
-dist-clean: clean
+clean-dist:
 	rm -rf $(DISTFILES_DIR)
+
+clean-tools:
+	rm -rf $(TOOLS_DIR)
+
+clean-sysroot:
+	rm -rf $(SYSROOT_DIR)
