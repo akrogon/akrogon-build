@@ -1,5 +1,5 @@
 set(AKROGON_BUILD_TRIPLE
-	"x86_64-akrogon-linux-gnu"
+	"x86_64-pc-linux-gnu"
 	CACHE STRING "Akrogon build triple"
 )
 
