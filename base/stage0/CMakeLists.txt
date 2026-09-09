@@ -39,4 +39,5 @@ add_subdirectory(packages/mpc)
 add_subdirectory(packages/linux-headers)
 add_subdirectory(packages/gcc-bootstrap)
 add_subdirectory(packages/glibc)
+add_subdirectory(packages/libstdcxx)
 
