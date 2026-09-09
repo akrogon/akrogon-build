@@ -1,5 +1,5 @@
 set(GCC_VERSION 15.2.0)
-set(GCC_URL "https://ftpmirror.gnu.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.xz")
+set(GCC_URL "https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.xz")
 set(GCC_SHA256 "438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e")
 set(GCC_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/build")
 
@@ -7,6 +7,9 @@ akrogon_package(
 	gcc
 	URL "${GCC_URL}"
 	URL_HASH "SHA256=${GCC_SHA256}"
+
+	PATCH
+		"${CMAKE_CURRENT_SOURCE_DIR}/akrogon-libdir.patch"
 
 	DEPENDS
 	    binutils
@@ -28,7 +31,8 @@ akrogon_package(
 	    --with-mpc-lib=${AKROGON_TOOLS}/lib
 	    --with-newlib
 	    --without-headers
-	    --enable-languages=c
+	    --enable-languages=c,c++
+	    --disable-libstdcxx
 	    --disable-shared
 	    --disable-threads
 	    --disable-multilib

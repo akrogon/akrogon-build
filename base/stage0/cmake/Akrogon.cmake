@@ -4,13 +4,21 @@ function(akrogon_package name)
 	cmake_parse_arguments(
 		PACKAGE
 		""
-		"URL;URL_HASH;SOURCE_SUBDIR"
+		"URL;URL_HASH;SOURCE_SUBDIR;PATCH"
 		"DEPENDS;CONFIGURE_COMMAND;BUILD_COMMAND;INSTALL_COMMAND"
 		${ARGN}
 	)
 
 	set(target "${name}")
 	set(args)
+
+	set(patch_args)
+	if(PACKAGE_PATCH)
+		list(APPEND patch_args
+			PATCH_COMMAND
+			patch -p0  -i "${PACKAGE_PATCH}"
+		)
+	endif()
 
 	if(NOT PACKAGE_CONFIGURE_COMMAND)
 		message(FATAL_ERROR
@@ -58,6 +66,7 @@ function(akrogon_package name)
 		DOWNLOAD_DIR "${AKROGON_DISTFILES}"
 
 		${args}
+		${patch_args}
 
 		BUILD_COMMAND ${PACKAGE_BUILD_COMMAND}
 		DEPENDS ${PACKAGE_DEPENDS}
