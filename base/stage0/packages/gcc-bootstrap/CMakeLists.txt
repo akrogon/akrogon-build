@@ -18,32 +18,40 @@ akrogon_package(
 	    mpc
 
 	CONFIGURE_COMMAND
-	    <SOURCE_DIR>/configure
-	    --target=${AKROGON_TARGET_TRIPLE}
-	    --prefix=${AKROGON_TOOLS}
-	    --with-sysroot=${AKROGON_SYSROOT}
-	    --with-native-system-header-dir=/include
-	    --with-gmp-include=${AKROGON_TOOLS}/include
-	    --with-gmp-lib=${AKROGON_TOOLS}/lib
-	    --with-mpfr-include=${AKROGON_TOOLS}/include
-	    --with-mpfr-lib=${AKROGON_TOOLS}/lib
-	    --with-mpc-include=${AKROGON_TOOLS}/include
-	    --with-mpc-lib=${AKROGON_TOOLS}/lib
-	    --with-newlib
-	    --without-headers
-	    --enable-languages=c,c++
-	    --disable-libstdcxx
-	    --disable-shared
-	    --disable-threads
-	    --disable-multilib
-	    --disable-libatomic
-	    --disable-libgomp
-	    --disable-libquadmath
-	    --disable-libssp
-	    --disable-libvtv
-	    --disable-nls
-	    --disable-werror
-	    --disable-bootstrap
+		${CMAKE_COMMAND} -E env
+		AR=${AKROGON_TARGET_AR}
+		AS=${AKROGON_TARGET_AS}
+		LD=${AKROGON_TARGET_LD}
+		RANLIB=${AKROGON_TARGET_RANLIB}
+		OBJCOPY=${AKROGON_TARGET_OBJCOPY}
+		STRIP=${AKROGON_TARGET_STRIP}
+		NM=${AKROGON_TARGET_NM}
+		<SOURCE_DIR>/configure
+		--target=${AKROGON_TARGET_TRIPLE}
+		--prefix=/
+		--with-sysroot=${AKROGON_SYSROOT}
+		--with-native-system-header-dir=/include
+		--with-gmp-include=${AKROGON_TOOLS}/include
+		--with-gmp-lib=${AKROGON_TOOLS}/lib
+		--with-mpfr-include=${AKROGON_TOOLS}/include
+		--with-mpfr-lib=${AKROGON_TOOLS}/lib
+		--with-mpc-include=${AKROGON_TOOLS}/include
+		--with-mpc-lib=${AKROGON_TOOLS}/lib
+		--with-newlib
+		--without-headers
+		--enable-languages=c,c++
+		--disable-libstdcxx
+		--disable-shared
+		--disable-threads
+		--disable-multilib
+		--disable-libatomic
+		--disable-libgomp
+		--disable-libquadmath
+		--disable-libssp
+		--disable-libvtv
+		--disable-nls
+		--disable-werror
+		--disable-bootstrap
 
 	BUILD_COMMAND
 	    ${CMAKE_MAKE_PROGRAM}

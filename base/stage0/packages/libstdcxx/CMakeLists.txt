@@ -11,18 +11,20 @@ akrogon_package(
 	DEPENDS
 		glibc
 
+	PATCH
+		"${CMAKE_CURRENT_SOURCE_DIR}/akrogon-libdir.patch"
+
 	CONFIGURE_COMMAND
 		${CMAKE_COMMAND} -E env
+			AR=${AKROGON_TOOLS}/bin/${AKROGON_TARGET_TRIPLE}-ar
+			RANLIB=${AKROGON_TOOLS}/bin/${AKROGON_TARGET_TRIPLE}-ranlib
+			PATH=${AKROGON_TOOLS}/bin:$ENV{PATH}
 			CXX=${AKROGON_TARGET_CC}
 			CC=${AKROGON_TARGET_CC}
 			BUILD_CC=${AKROGON_BUILD_CC}
 			<SOURCE_DIR>/libstdc++-v3/configure
-			--with-gmp-include=${AKROGON_TOOLS}/include
-			--with-gmp-lib=${AKROGON_TOOLS}/lib
-			--with-mpfr-include=${AKROGON_TOOLS}/include
-			--with-mpfr-lib=${AKROGON_TOOLS}/lib
-			--with-mpc-include=${AKROGON_TOOLS}/include
-			--with-mpc-lib=${AKROGON_TOOLS}/lib
+			--libdir=/lib
+			--includedir=/include
 			--host=${AKROGON_TARGET_TRIPLE}
 			--build=${AKROGON_BUILD_TRIPLE}
 			--target=${AKROGON_TARGET_TRIPLE}
