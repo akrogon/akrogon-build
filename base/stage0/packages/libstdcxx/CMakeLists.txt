@@ -9,6 +9,7 @@ akrogon_package(
 	URL_HASH "SHA256=${LIBSTDCXX_SHA256}"
 
 	DEPENDS
+		gcc-bootstrap
 		glibc
 
 	PATCH

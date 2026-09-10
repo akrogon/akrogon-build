@@ -4,7 +4,7 @@ set(GCC_SHA256 "438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e
 set(GCC_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/build")
 
 akrogon_package(
-	gcc
+	gcc-bootstrap
 	URL "${GCC_URL}"
 	URL_HASH "SHA256=${GCC_SHA256}"
 
