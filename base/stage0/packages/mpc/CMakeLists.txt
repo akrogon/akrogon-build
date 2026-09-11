@@ -17,7 +17,7 @@ akrogon_package(
 
 	CONFIGURE_COMMAND
 	    <SOURCE_DIR>/configure
-	    --build=${AKROGON_TARGET_TRIPLE}
+	    --build=${AKROGON_BUILD_TRIPLE}
 	    --prefix=${AKROGON_TOOLS}
 	    --with-sysroot=${AKROGON_SYSROOT}
 	    CPPFLAGS=${MPC_CPPFLAGS}
