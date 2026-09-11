@@ -22,7 +22,7 @@ akrogon_package(glibc
 		CC=${AKROGON_TARGET_CC}
 		BUILD_CC=${AKROGON_BUILD_CC}
 		<SOURCE_DIR>/configure
-		--prefix=${AKROGON_SYSROOT}
+		--prefix=/
 		--build=${AKROGON_BUILD_TRIPLE}
 		--host=${AKROGON_TARGET_TRIPLE}
 		--disable-nscd
@@ -35,5 +35,6 @@ akrogon_package(glibc
 	
 	INSTALL_COMMAND
 		${CMAKE_MAKE_PROGRAM}
+		DESTDIR=${AKROGON_SYSROOT}
 		install
 )

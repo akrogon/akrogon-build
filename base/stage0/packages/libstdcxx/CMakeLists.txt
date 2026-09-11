@@ -18,16 +18,22 @@ akrogon_package(
 	CONFIGURE_COMMAND
 		${CMAKE_COMMAND} -E env
 			PATH=${AKROGON_TOOLS}/bin:$ENV{PATH}
+			BUILD_CC=${AKROGON_BUILD_CC}
 			CXX=${AKROGON_TARGET_CC}
 			CC=${AKROGON_TARGET_CC}
-			BUILD_CC=${AKROGON_BUILD_CC}
+			AR=${AKROGON_TARGET_AR}
+			AS=${AKROGON_TARGET_AS}
+			OBJCOPY=${AKROGON_TARGET_OBJCOPY}
+			RANLIB=${AKROGON_TARGET_RANLIB}
+			NM=${AKROGON_TARGET_NM}
+			STRIP=${AKROGON_TARGET_STRIP}
 			<SOURCE_DIR>/libstdc++-v3/configure
-			--libdir=/lib
-			--includedir=/include
 			--host=${AKROGON_TARGET_TRIPLE}
 			--build=${AKROGON_BUILD_TRIPLE}
 			--target=${AKROGON_TARGET_TRIPLE}
-			--prefix=${AKROGON_SYSROOT}
+			--prefix=/
+			--libdir=/lib
+			--includedir=/include
 			--disable-multilib
 			--disable-nls
 			--disable-libstdcxx-pch
@@ -38,6 +44,7 @@ akrogon_package(
 	
 	INSTALL_COMMAND
 	    ${CMAKE_MAKE_PROGRAM}
+	    DESTDIR=${AKROGON_SYSROOT}
 	    install
 )
 
