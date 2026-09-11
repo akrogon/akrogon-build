@@ -13,7 +13,7 @@ akrogon_package(glibc
 	URL "${GLIBC_URL}"
 	URL_HASH "SHA256=${GLIBC_SHA256}"
 
-	DEPENDS gcc-bootstrap
+	DEPENDS gcc-cross
 		linux-headers
 	
 	CONFIGURE_COMMAND

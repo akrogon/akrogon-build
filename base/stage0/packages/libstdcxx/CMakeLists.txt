@@ -9,7 +9,7 @@ akrogon_package(
 	URL_HASH "SHA256=${LIBSTDCXX_SHA256}"
 
 	DEPENDS
-		gcc-bootstrap
+		gcc-cross
 		glibc
 
 	PATCH
@@ -17,8 +17,6 @@ akrogon_package(
 
 	CONFIGURE_COMMAND
 		${CMAKE_COMMAND} -E env
-			AR=${AKROGON_TOOLS}/bin/${AKROGON_TARGET_TRIPLE}-ar
-			RANLIB=${AKROGON_TOOLS}/bin/${AKROGON_TARGET_TRIPLE}-ranlib
 			PATH=${AKROGON_TOOLS}/bin:$ENV{PATH}
 			CXX=${AKROGON_TARGET_CC}
 			CC=${AKROGON_TARGET_CC}
