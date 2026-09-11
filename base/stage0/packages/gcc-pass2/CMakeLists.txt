@@ -22,7 +22,7 @@ akrogon_package(
 			--build=${AKROGON_BUILD_TRIPLE}
 			--host=${AKROGON_BUILD_TRIPLE}
 			--target=${AKROGON_TARGET_TRIPLE}
-			--prefix=/
+			--prefix=${AKROGON_TOOLS}
 			--with-sysroot=${AKROGON_SYSROOT}
 			--with-native-system-header-dir=/include
 			--with-gmp-include=${AKROGON_TOOLS}/include
@@ -50,7 +50,6 @@ akrogon_package(
 	
 	INSTALL_COMMAND
 	    ${CMAKE_MAKE_PROGRAM}
-	    DESTDIR=${AKROGON_SYSROOT}
 	    install
 )
 

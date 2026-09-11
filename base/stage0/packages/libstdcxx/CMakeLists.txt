@@ -27,7 +27,7 @@ akrogon_package(
 			--host=${AKROGON_TARGET_TRIPLE}
 			--build=${AKROGON_BUILD_TRIPLE}
 			--target=${AKROGON_TARGET_TRIPLE}
-			--prefix=/
+			--prefix=${AKROGON_SYSROOT}
 			--disable-multilib
 			--disable-nls
 			--disable-libstdcxx-pch
@@ -38,7 +38,6 @@ akrogon_package(
 	
 	INSTALL_COMMAND
 	    ${CMAKE_MAKE_PROGRAM}
-	    DESTDIR=${AKROGON_SYSROOT}
 	    install
 )
 
